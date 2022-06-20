@@ -1,0 +1,7 @@
+{
+  "name": "crypto-wallet-mobile",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
