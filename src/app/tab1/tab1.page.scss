@@ -1,0 +1,47 @@
+.details-acount-container{
+  width: 300px;
+  margin: 50px auto 10px auto;
+  text-align: center;
+  border: 2px solid rgba(220, 220, 220, .324);
+  min-height: 130px;
+  padding: 10px;
+}
+.no-account-selected{
+  min-height: 130px;
+  line-height: 130px;
+  font-size: 20px;
+}
+.row-options{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 300px;
+  margin: 30px auto;
+}
+.item-account{
+  --ion-item-background:#050c1f;
+  margin: 5px;
+  border: 2px solid transparent;
+}
+.item-account.selected{
+  border: 2px solid var(--ion-color-primary);
+}
+.list-item-container{
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 12px;
+}
+.account-selected{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.account-address{
+  color: rgba(220, 220, 220, .324);
+  font-size: 14px;
+}
+.account-name{
+  font-weight: bold;
+  margin: 10px 0;
+  font-size: 14px;
+}

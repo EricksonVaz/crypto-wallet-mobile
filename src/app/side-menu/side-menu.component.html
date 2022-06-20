@@ -1,0 +1,51 @@
+<ion-menu
+  side="start"
+  menuId="side-menu"
+  contentId="main-menu"
+>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title class="title-label">riftOne Wallet</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list-header>
+      <ion-label class="nav-label">Opções do Utilizador</ion-label>
+    </ion-list-header>
+    <ion-list>
+      <ion-item (click)="openModalPerfil()">
+        <ion-avatar slot="start">
+          <ion-icon class="icon-opt-user" name="person"></ion-icon>
+        </ion-avatar>
+        <ion-label>Meu Perfil</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-avatar slot="start">
+          <ion-icon class="icon-opt-user" name="log-in"></ion-icon>
+        </ion-avatar>
+        <ion-label class="label-logout">Logout</ion-label>
+      </ion-item>
+    </ion-list>
+    <ion-list-header>
+      <ion-label class="nav-label">Selecione uma rede</ion-label>
+    </ion-list-header>
+    <ion-list #containerNet>
+      <ion-item #itemClicked *ngFor="let network of networks" (click)="selectNetwork(network,containerNet,itemClicked)">
+        <ion-avatar slot="start">
+          <img [src]="network.icon" class="img-avatar">
+        </ion-avatar>
+        <ion-label>{{network.name}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+  <ion-label class="label-copyright">Todos os direitos reservados &copy;riftone.io</ion-label>
+</ion-menu>
+<ion-modal
+  [isOpen]="false"
+  [swipeToClose]="true"
+  [presentingElement]="routerOutlet.nativeEl"
+>
+  <ng-template>
+    <modal-profile></modal-profile>
+  </ng-template>
+</ion-modal>

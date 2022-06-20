@@ -1,0 +1,36 @@
+
+<ion-header translucent>
+  <ion-toolbar>
+    <ion-title>Meu Perfil</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="dismissModal()">Close
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen>
+  <div class="container-form">
+    <ion-label class="form-title">Atualizar Password</ion-label>
+    <form class="form-edit-password">
+      <ion-item class="user-email-label">
+        <ion-label>ericksoncv1@outlook.com</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Password Atual</ion-label>
+        <ion-input type="password" value=""></ion-input>
+      </ion-item>
+      <div class="feedback-error">campo obrigatório</div>
+      <ion-item>
+        <ion-label position="floating">Novo Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <div class="feedback-error">campo obrigatório</div>
+      <ion-item>
+        <ion-label position="floating">Confirmar Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <div class="feedback-error">campo obrigatório</div>
+      <ion-button class="btn-submit" size="small" color="btn-primary-sm">atualizar</ion-button>
+    </form>
+  </div>
+</ion-content>

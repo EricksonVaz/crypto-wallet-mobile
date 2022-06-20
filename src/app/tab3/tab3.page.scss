@@ -1,0 +1,38 @@
+ion-select::part(text) {
+  color: orange;
+}
+.continer-info-transfer{
+  width: 300px;
+  margin: 50px auto 10px auto;
+  border: 2px solid rgba(220, 220, 220, .324);
+  min-height: 130px;
+  padding: 10px;
+}
+.btn-submit{
+  margin-top: 20px;
+}
+form{
+  text-align: center;
+}
+.transfer-info,.label-data{
+  font-size: 12px;
+  text-align: left;
+}
+.label-amount{
+  width: fit-content;
+}
+.item-transfer{
+  justify-content: space-between;
+  --ion-item-background: #050c1f;
+  margin: 5px;
+}
+.label-data{
+  text-align: right;
+}
+.transfers-list {
+  width: 335px;
+  margin: 10px auto;
+  max-height: 340px;
+  overflow-y: auto;
+  padding: 12px;
+}

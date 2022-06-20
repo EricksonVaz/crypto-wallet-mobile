@@ -1,0 +1,35 @@
+.title-label{
+  color: aliceblue;
+}
+.img-avatar{
+  width: 30px;
+  object-fit: contain;
+}
+.btn-select-network .button-native{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.nav-label{
+  font-size: 20px;
+  padding: 20px;
+  color: var(--ion-color-primary);
+}
+
+.icon-opt-user{
+  color: var(--ion-color-primary);
+  font-size: 40px;
+}
+.label-logout{
+  color: tomato;
+  font-weight: bold;
+}
+.label-copyright{
+  color: var(--ion-color-primary);
+  font-size: 12px;
+  text-align: center;
+}
+.selected{
+  border: 2px solid orange;
+  border-radius: 10px;
+}

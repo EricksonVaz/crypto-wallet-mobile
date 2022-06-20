@@ -1,17 +1,43 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
+  <toolbar title="Início"></toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <!-- <ion-header collapse="condense">
     <ion-toolbar>
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <div class="details-acount-container">
+    <div class="no-account-selected" *ngIf="!isAccountSelected">
+      <ion-label>Selecione uma conta</ion-label>
+    </div>
+    <div class="account-selected" *ngIf="isAccountSelected">
+      <ion-avatar>
+        <img [src]="accountSelected.icon" class="img-avatar">
+      </ion-avatar>
+      <ion-label class="amount-coin">100 RC</ion-label>
+      <ion-label class="account-name">Conta XPTO</ion-label>
+      <ion-label class="account-address">0xCbf4I84qsHt</ion-label>
+    </div>
+  </div>
+  <div class="row-options">
+    <ion-label>Minhas Contas</ion-label>
+    <ion-button slot="end" fill="outline" color="btn-add">
+      <ion-icon name="add"></ion-icon>
+      Adicionar
+    </ion-button>
+  </div>
+  <ion-list #containerAccountList class="list-item-container">
+    <ion-item #itemClicked class="item-account" *ngFor="let account of accounts" (click)="selectAccount(account,itemClicked,containerAccountList)">
+      <ion-label>{{account.name}}</ion-label>
+      <ion-label>{{account.address}}</ion-label>
+      <ion-button slot="end" fill="outline" color="btn-add">
+        <ion-icon name="add"></ion-icon>
+        Copiar
+      </ion-button>
+    </ion-item>
+  </ion-list>
 </ion-content>
