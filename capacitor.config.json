@@ -1,6 +1,6 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "crypto-wallet-mobile",
+	"appId": "io.riftone.wallet",
+	"appName": "riftOne Wallet",
 	"webDir": "www",
 	"bundledWebRuntime": false
 }

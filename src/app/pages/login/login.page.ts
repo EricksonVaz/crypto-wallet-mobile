@@ -14,6 +14,7 @@ export class LoginPage implements OnInit {
   }
 
   submit(){
+    localStorage.setItem("logged","logged");
     this.router.navigateByUrl("tabs");
   }
 

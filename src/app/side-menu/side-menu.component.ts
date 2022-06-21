@@ -12,11 +12,11 @@ import { SideMenuService } from '../services/side-menu.service';
   styleUrls: ['./side-menu.component.scss'],
 })
 export class SideMenuComponent implements OnInit {
-  @Input() routerOutlet;
   isOpen=false;
   private readonly IDMENU = "side-menu";
   subscription:Subscription;
   networks = environment.networks;
+  routerOutlet:any;
 
   static component:SideMenuComponent;
 
@@ -24,11 +24,11 @@ export class SideMenuComponent implements OnInit {
     this.subscription = this.sideMenuService.onToggle().subscribe((state)=>{
       this.openSideMenu();
     });
-
     SideMenuComponent.component = this;
   }
 
   ngOnInit() {
+    this.routerOutlet = document.querySelector("ion-router-outlet");
   }
 
   openSideMenu(){
@@ -69,7 +69,9 @@ export class SideMenuComponent implements OnInit {
 
   logOut(){
     this.menu.close(this.IDMENU);
-    this.router.navigateByUrl("login");
+    localStorage.removeItem("logged");
+    //window.location.href = "login";
+    this.router.navigate(["/login"]);
   }
 
 }

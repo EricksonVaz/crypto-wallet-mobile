@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -6,12 +6,13 @@ import { ActivatedRoute } from '@angular/router';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  showSideMenu = true;
   constructor() {
     console.log("activateRouter",window.location.pathname)
   }
 
-  shouldAddSideBar(){
-    return window.location.pathname.indexOf("tabs") != -1
+  ngOnInit(): void {
+      this.showSideMenu = window.location.pathname.indexOf("tabs") != -1;
   }
 }

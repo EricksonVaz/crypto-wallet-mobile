@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">riftOne Wallet</string>
+    <string name="title_activity_main">riftOne Wallet</string>
+    <string name="package_name">io.riftone.wallet</string>
+    <string name="custom_url_scheme">io.riftone.wallet</string>
+</resources>
