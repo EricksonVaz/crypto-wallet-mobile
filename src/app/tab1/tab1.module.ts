@@ -7,6 +7,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
+import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
 
 @NgModule({
   imports: [
@@ -16,6 +17,6 @@ import { ToolbarComponent } from '../components/toolbar/toolbar.component';
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page,ToolbarComponent]
+  declarations: [Tab1Page,ToolbarComponent,ModalAddAccountComponent]
 })
 export class Tab1PageModule {}

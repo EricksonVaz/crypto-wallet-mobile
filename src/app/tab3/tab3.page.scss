@@ -24,13 +24,12 @@ form{
 .item-transfer{
   justify-content: space-between;
   --ion-item-background: #050c1f;
-  margin: 5px;
+  margin: 7px;
 }
 .label-data{
   text-align: right;
 }
 .transfers-list {
-  width: 335px;
   margin: 10px auto;
   max-height: 340px;
   overflow-y: auto;

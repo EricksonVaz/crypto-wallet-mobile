@@ -1,0 +1,32 @@
+<ion-content>
+  <form class="form-signup">
+    <div class="header">
+      <img src="assets/android-chrome-192x192.png" alt="">
+      <h1 class="form-title">Registrar</h1>
+    </div>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" name="email"></ion-input>
+    </ion-item>
+    <div class="feedback-error">campo obrigatório</div>
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input type="password" name="password"></ion-input>
+    </ion-item>
+    <div class="feedback-error">campo obrigatório</div>
+    <ion-item>
+      <ion-label position="floating">Confirmar Password</ion-label>
+      <ion-input type="password" name="confirm"></ion-input>
+    </ion-item>
+    <div class="feedback-error">campo obrigatório</div>
+    <div class="container-actions">
+      <ion-label>
+        Já tenho uma conta <a routerLink="/login">realizar login</a>
+      </ion-label>
+      <ion-label>
+        <a routerLink="/forgot-password">esqueci a password</a>
+      </ion-label>
+    </div>
+    <ion-button type="submit" fill="outline">Registrar</ion-button>
+  </form>
+</ion-content>

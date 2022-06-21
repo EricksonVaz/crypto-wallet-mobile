@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonItem, IonList, MenuController, ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
@@ -19,7 +20,7 @@ export class SideMenuComponent implements OnInit {
 
   static component:SideMenuComponent;
 
-  constructor(private sideMenuService:SideMenuService,private menu: MenuController,private modalController:ModalController) {
+  constructor(private sideMenuService:SideMenuService,private menu: MenuController,private modalController:ModalController,private router:Router,) {
     this.subscription = this.sideMenuService.onToggle().subscribe((state)=>{
       this.openSideMenu();
     });
@@ -64,6 +65,11 @@ export class SideMenuComponent implements OnInit {
     this.modalController.dismiss({
       'dismissed': true
     });
+  }
+
+  logOut(){
+    this.menu.close(this.IDMENU);
+    this.router.navigateByUrl("login");
   }
 
 }

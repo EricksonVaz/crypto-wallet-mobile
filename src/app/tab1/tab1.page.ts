@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { IonItem, IonList } from '@ionic/angular';
+import { RouterOutlet } from '@angular/router';
+import { IonItem, IonList, IonRouterOutlet, MenuController, ModalController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
+import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
 
 @Component({
   selector: 'app-tab1',
@@ -61,7 +63,14 @@ export class Tab1Page {
     },
   ]
 
-  constructor() {}
+  routerOutlet:any;
+  private readonly IDMENU = "tab-1";
+  static component:Tab1Page;
+
+  constructor(private modalController:ModalController,private menu: MenuController) {
+    this.routerOutlet = document.querySelector("ion-router-outlet");
+    Tab1Page.component = this;
+  }
 
   selectAccount(account:any,itemClicked:IonItem,containerAccountList:IonList){
     let accountList = containerAccountList["el"];
@@ -76,8 +85,21 @@ export class Tab1Page {
 
   }
 
-  dismissModalPerfil(){
-    alert("close")
+  async openModalAddNewAccount(){
+    const modal = await this.modalController.create({
+      component: ModalAddAccountComponent,
+      cssClass: 'modal-add-account'
+    });
+    this.menu.close(this.IDMENU);
+    await modal.present();
+  }
+
+  dismissModalAddAccount() {
+    // using the injected ModalController this page
+    // can "dismiss" itself and optionally pass back data
+    this.modalController.dismiss({
+      'dismissed': true
+    });
   }
 
 }
