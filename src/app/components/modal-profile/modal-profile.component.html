@@ -11,26 +11,28 @@
 <ion-content fullscreen>
   <div class="container-form">
     <ion-label class="form-title">Atualizar Password</ion-label>
-    <form class="form-edit-password">
+    <form #f="ngForm" #formUpdateProfile class="form-edit-password" (ngSubmit)="submit(f,formUpdateProfile)">
       <ion-item class="user-email-label">
-        <ion-label>ericksoncv1@outlook.com</ion-label>
+        <ion-label>{{emailUser}}</ion-label>
+        <ion-input type="email" name="email" [value]="emailUser" class="d-none"></ion-input>
       </ion-item>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Password Atual</ion-label>
-        <ion-input type="password" value=""></ion-input>
+        <ion-input ngModel type="password" name="password"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Novo Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input ngModel type="password" name="newpassword"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Confirmar Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input ngModel type="password" name="confirm"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
-      <ion-button class="btn-submit" fill="outline">atualizar</ion-button>
+      <div class="feedback-error"></div>
+      <ion-button type="submit" class="btn-submit" fill="outline">atualizar</ion-button>
     </form>
   </div>
 </ion-content>

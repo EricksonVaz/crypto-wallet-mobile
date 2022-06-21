@@ -31,10 +31,11 @@
     </ion-button>
   </div>
   <ion-list #containerAccountList class="list-item-container">
+    <ion-label class="text-center" *ngIf="!accounts.length">Nenhuma Conta encontrada</ion-label>
     <ion-item #itemClicked class="item-account" *ngFor="let account of accounts" (click)="selectAccount(account,itemClicked,containerAccountList)">
       <ion-label>{{account.name}}</ion-label>
-      <ion-label>{{account.address}}</ion-label>
-      <ion-button slot="end" fill="outline" color="btn-add">
+      <ion-label>{{account.public_key | formatPk }}</ion-label>
+      <ion-button slot="end" fill="outline" color="btn-add" (click)="copyAddress(account.public_key || '')">
         <ion-icon name="add"></ion-icon>
         Copiar
       </ion-button>

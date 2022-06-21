@@ -1,19 +1,19 @@
 <ion-content>
-  <form class="form-login" (ngSubmit)="submit()">
+  <form #formLogin #f="ngForm" class="form-login" (ngSubmit)="submit(f,formLogin)">
     <div class="header">
       <img src="assets/android-chrome-192x192.png" alt="">
       <h1 class="form-title">Login</h1>
     </div>
     <ion-item>
       <ion-label position="floating">Email</ion-label>
-      <ion-input type="email" name="email"></ion-input>
+      <ion-input ngModel type="email" name="email"></ion-input>
     </ion-item>
-    <div class="feedback-error">campo obrigatório</div>
+    <div class="feedback-error"></div>
     <ion-item>
       <ion-label position="floating">Password</ion-label>
-      <ion-input type="password" name="password"></ion-input>
+      <ion-input ngModel type="password" name="password"></ion-input>
     </ion-item>
-    <div class="feedback-error">campo obrigatório</div>
+    <div class="feedback-error"></div>
     <div class="container-actions">
       <ion-label>
         Não tenho uma conta <a routerLink="/signup">registrar uma</a>

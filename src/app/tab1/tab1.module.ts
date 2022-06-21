@@ -8,6 +8,7 @@ import { ExploreContainerComponentModule } from '../explore-container/explore-co
 import { Tab1PageRoutingModule } from './tab1-routing.module';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
+import { FormatPkPipe } from '../utils/pipes/format-pk.pipe';
 
 @NgModule({
   imports: [
@@ -17,6 +18,6 @@ import { ModalAddAccountComponent } from '../components/modal-add-account/modal-
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page,ToolbarComponent,ModalAddAccountComponent]
+  declarations: [Tab1Page,ToolbarComponent,ModalAddAccountComponent,FormatPkPipe]
 })
 export class Tab1PageModule {}

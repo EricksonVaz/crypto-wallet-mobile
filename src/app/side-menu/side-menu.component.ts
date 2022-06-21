@@ -4,7 +4,10 @@ import { IonItem, IonList, MenuController, ModalController } from '@ionic/angula
 import { Subscription } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ModalProfileComponent } from '../components/modal-profile/modal-profile.component';
+import User from '../models/user';
+import Web3Obj from '../models/web3Obj';
 import { SideMenuService } from '../services/side-menu.service';
+import swal from '../utils/sweetalert';
 
 @Component({
   selector: 'side-menu',
@@ -47,6 +50,8 @@ export class SideMenuComponent implements OnInit {
 
     console.log("network",network);
 
+    Web3Obj.networkInfo = network;
+
     this.menu.close(this.IDMENU);
   }
 
@@ -69,9 +74,16 @@ export class SideMenuComponent implements OnInit {
 
   logOut(){
     this.menu.close(this.IDMENU);
-    localStorage.removeItem("logged");
-    //window.location.href = "login";
-    this.router.navigate(["/login"]);
+    User.logout(()=>{
+      this.router.navigateByUrl('login');
+    },(err:any)=>{
+      swal({
+        title: "Error",
+        text: "Erro ao realizar logout",
+        icon: "error"
+      });
+      console.log(err)
+    });
   }
 
 }

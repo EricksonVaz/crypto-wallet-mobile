@@ -30,7 +30,7 @@
       <ion-label class="nav-label">Selecione uma rede</ion-label>
     </ion-list-header>
     <ion-list #containerNet>
-      <ion-item #itemClicked *ngFor="let network of networks" (click)="selectNetwork(network,containerNet,itemClicked)">
+      <ion-item #itemClicked *ngFor="let network of networks" (click)="selectNetwork(network,containerNet,itemClicked)" [ngClass]="{'selected':network.id==1}">
         <ion-avatar slot="start">
           <img [src]="network.icon" class="img-avatar">
         </ion-avatar>

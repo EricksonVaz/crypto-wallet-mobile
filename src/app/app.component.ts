@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-root',
@@ -13,6 +14,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
-      this.showSideMenu = window.location.pathname.indexOf("tabs") != -1;
+    window.addEventListener("load",async ()=>{
+      await SplashScreen.hide();
+    });
   }
 }
