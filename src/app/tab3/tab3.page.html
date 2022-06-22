@@ -1,49 +1,47 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Transferir
-    </ion-title>
-  </ion-toolbar>
+  <toolbar title="Transferir"></toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <div class="continer-info-transfer">
-    <ion-item>
-      <ion-label>Selecione uma conta</ion-label>
-      <ion-select ok-text="Feito" cancel-text="Cancelar">
-        <ion-select-option value="conta a">Conta A do Erickson de Carvalho VAz</ion-select-option>
-        <ion-select-option value="conta b">Conta B</ion-select-option>
-        <ion-select-option value="conta c">Conta C</ion-select-option>
-        <ion-select-option value="conta d">Conta D</ion-select-option>
-        <ion-select-option value="conta e">Conta E</ion-select-option>
-        <ion-select-option value="conta f">Conta F</ion-select-option>
-        <ion-select-option value="conta g">Conta G</ion-select-option>
-      </ion-select>
-    </ion-item>
-    <form>
+    <form #f="ngForm" #formTransfer (ngSubmit)="submit(f,formTransfer)">
+      <ion-item>
+        <ion-label>Selecione uma conta</ion-label>
+        <ion-select ok-text="Feito" cancel-text="Cancelar" name="from" #select (ionChange)="setAccountSelected(select)">
+          <ion-select-option value="{{account | json}}" *ngFor="let account of accounts">{{account.name}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Endereço destino</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" ngModel name="to"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Valor</ion-label>
-        <ion-input></ion-input>
+        <ion-input type="text" ngModel name="amount"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
-      <ion-button class="btn-submit" fill="outline">enviar</ion-button>
+      <div class="feedback-error"></div>
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" ngModel name="password"></ion-input>
+      </ion-item>
+      <div class="feedback-error"></div>
+      <ion-button type="submit" class="btn-submit" fill="outline">enviar</ion-button>
     </form>
   </div>
-  <ion-list class="transfers-list">
-    <ion-item class="item-transfer" *ngFor="let account of accounts">
-      <ion-label class="label-amount">- 13 RC</ion-label>
+  <ion-label class="text-center" *ngIf="!isAccountSelected">Selecione uma conta</ion-label>
+  <ion-label class="text-center" *ngIf="isAccountSelected && !listTransactions.length">Nenhuma transação encontrada</ion-label>
+  <ion-list class="transfers-list" *ngIf="isAccountSelected && listTransactions.length">
+    <ion-item class="item-transfer" *ngFor="let transaction of listTransactions">
+      <ion-label class="label-amount">- {{transaction.amount}} {{networkInfo.symbol}}</ion-label>
       <div class="transfer-info">
-        <ion-label class="label-from">De: 0xCbf4I84qsHt
+        <ion-label class="label-from">De: {{transaction.from! | formatPk}}
         </ion-label>
-        <ion-label class="label-to">Para: 0xCbf4I84qsHt
+        <ion-label class="label-to">Para: {{transaction.to! | formatPk}}
         </ion-label>
       </div>
-      <ion-label class="label-data">11/05/2012</ion-label>
+      <ion-label class="label-data">{{transaction.datetime}}</ion-label>
     </ion-item>
   </ion-list>
 </ion-content>

@@ -1,0 +1,36 @@
+.container-form,.primary-key-container {
+  width: 300px;
+  margin: 50px auto 10px auto;
+  border: 2px solid rgba(220, 220, 220, .324);
+  min-height: 130px;
+  padding: 10px;
+}
+
+.form-title {
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+}
+
+.form-get-key {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.btn-submit {
+  margin-top: 15px;
+}
+
+.primary-key-container{
+  margin-top: 10px;
+  min-height: max-content;
+  display: flex;
+  word-wrap: break-word;
+  word-break: break-all;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}

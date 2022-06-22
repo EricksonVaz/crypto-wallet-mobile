@@ -8,6 +8,7 @@ import User from '../models/user';
 import Web3Obj from '../models/web3Obj';
 import { SideMenuService } from '../services/side-menu.service';
 import { Tab1Page } from '../tab1/tab1.page';
+import { Tab3Page } from '../tab3/tab3.page';
 import swal from '../utils/sweetalert';
 
 @Component({
@@ -55,6 +56,9 @@ export class SideMenuComponent implements OnInit {
 
     Tab1Page.component.updateNetworkInfo();
     Tab1Page.component.showAccountBalance();
+
+    Tab3Page.component.getNetworkInfo();
+    Tab3Page.component.updateListtransactions();
     this.menu.close(this.IDMENU);
   }
 

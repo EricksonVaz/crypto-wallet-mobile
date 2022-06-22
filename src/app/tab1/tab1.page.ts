@@ -8,6 +8,8 @@ import Account from '../models/account';
 import IAccount from '../utils/interfaces/iAccount';
 import Web3Obj from '../models/web3Obj';
 import swal from '../utils/sweetalert';
+import { ModalEditAccountComponent } from '../components/modal-edit-account/modal-edit-account.component';
+import { ModalGetKeyComponent } from '../components/modal-get-key/modal-get-key.component';
 
 @Component({
   selector: 'app-tab1',
@@ -51,7 +53,7 @@ export class Tab1Page implements OnInit {
   }
 
   showAccountBalance(){
-    Account.balance(this.accountSelected.public_key!).then(amount=>{
+    Account.balance(this.accountSelected?.public_key!).then(amount=>{
       //console.log("amount",amount)
       if(typeof amount==="string") this.balance = amount;
     });
@@ -66,9 +68,23 @@ export class Tab1Page implements OnInit {
     await modal.present();
   }
 
-  dismissModalAddAccount() {
-    // using the injected ModalController this page
-    // can "dismiss" itself and optionally pass back data
+  async openModalEditAccount(){
+    const modal = await this.modalController.create({
+      component: ModalEditAccountComponent,
+      cssClass: 'modal-edit-account'
+    });
+    await modal.present();
+  }
+
+  async openModalGetKey(){
+    const modal = await this.modalController.create({
+      component: ModalGetKeyComponent,
+      cssClass: 'modal-get-key'
+    });
+    await modal.present();
+  }
+
+  dismissModal(){
     this.modalController.dismiss({
       'dismissed': true
     });
