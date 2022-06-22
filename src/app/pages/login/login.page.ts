@@ -12,12 +12,16 @@ import IUser from 'src/app/utils/interfaces/iuser';
 })
 export class LoginPage implements OnInit {
 
+  showLoginForm = false;
   constructor(private router:Router) {
   }
 
   ngOnInit() {
     checkUserLoggedState(()=>{
+      this.showLoginForm = true
       this.router.navigateByUrl("tabs");
+    },()=>{
+      this.showLoginForm = true;
     });
   }
 

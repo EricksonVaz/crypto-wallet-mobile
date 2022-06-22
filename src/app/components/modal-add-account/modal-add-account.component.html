@@ -10,23 +10,23 @@
 <ion-content fullscreen>
   <div class="container-form">
     <ion-label class="form-title">Registrar Conta</ion-label>
-    <form class="form-add-account">
+    <form #f="ngForm" #formNewAccount class="form-add-account" (ngSubmit)="submit(f,formNewAccount)">
       <ion-item>
         <ion-label position="floating">Nome da Conta</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input ngModel type="text" name="name"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Chave Privada</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input ngModel type="text" name="private_key"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
+      <div class="feedback-error"></div>
       <ion-item>
         <ion-label position="floating">Password</ion-label>
-        <ion-input type="password"></ion-input>
+        <ion-input ngModel type="password" name="private_key"></ion-input>
       </ion-item>
-      <div class="feedback-error">campo obrigatório</div>
-      <ion-button class="btn-submit" fill="outline">adicionar</ion-button>
+      <div class="feedback-error"></div>
+      <ion-button type="submit" class="btn-submit" fill="outline">adicionar</ion-button>
     </form>
   </div>
 </ion-content>

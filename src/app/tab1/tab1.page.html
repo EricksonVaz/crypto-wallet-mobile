@@ -16,11 +16,22 @@
     </div>
     <div class="account-selected" *ngIf="isAccountSelected">
       <ion-avatar>
-        <img [src]="accountSelected.icon" class="img-avatar">
+        <img [src]="networkInfo.icon" class="img-avatar">
       </ion-avatar>
-      <ion-label class="amount-coin">100 RC</ion-label>
-      <ion-label class="account-name">Conta XPTO</ion-label>
-      <ion-label class="account-address">0xCbf4I84qsHt</ion-label>
+      <ion-label class="amount-coin">{{balance}} {{networkInfo.symbol}}</ion-label>
+      <ion-label class="account-name">{{accountSelected?.name}}</ion-label>
+      <ion-label class="account-address">{{accountSelected?.public_key}}</ion-label>
+      <div class="row-account-actions">
+        <ion-button color="primary" fill="outline">
+          <ion-icon name="create-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="primary" fill="outline">
+          <ion-icon name="key-outline"></ion-icon>
+        </ion-button>
+        <ion-button color="danger" fill="outline" (click)="deleteAccount()">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </div>
     </div>
   </div>
   <div class="row-options">
@@ -36,7 +47,7 @@
       <ion-label>{{account.name}}</ion-label>
       <ion-label>{{account.public_key | formatPk }}</ion-label>
       <ion-button slot="end" fill="outline" color="btn-add" (click)="copyAddress(account.public_key || '')">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="copy-outline"></ion-icon>
         Copiar
       </ion-button>
     </ion-item>

@@ -208,7 +208,7 @@ export default class User{
     }
   }
 
-  static async isLogged(){
+  static isLogged(){
     const user = getAuth().currentUser;
 
     if (user) return true;

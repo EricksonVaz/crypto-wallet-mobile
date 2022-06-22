@@ -25,7 +25,7 @@ export function closeLoader(){
   document.documentElement.querySelector(".container-loader")?.classList.add("d-none");
 }
 
-export function checkUserLoggedState(cb:Function){
+export function checkUserLoggedState(cb:Function,errCB:Function){
   openLoader();
   let timeOut = 0;
   let checkUserLogged = setInterval(()=>{
@@ -36,6 +36,7 @@ export function checkUserLoggedState(cb:Function){
       closeLoader();
     }
     if(timeOut>=3){
+      errCB();
       closeLoader();
       clearInterval(checkUserLogged);
     }

@@ -6,6 +6,8 @@ import {Clipboard} from '@angular/cdk/clipboard';
 import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
 import Account from '../models/account';
 import IAccount from '../utils/interfaces/iAccount';
+import Web3Obj from '../models/web3Obj';
+import swal from '../utils/sweetalert';
 
 @Component({
   selector: 'app-tab1',
@@ -14,8 +16,10 @@ import IAccount from '../utils/interfaces/iAccount';
 })
 export class Tab1Page implements OnInit {
   isAccountSelected = false;
-  accountSelected = environment.defaultNetwork;
-  accounts:IAccount[] = []
+  accountSelected:IAccount;
+  accounts:IAccount[] = [];
+  balance?:string;
+  networkInfo = Web3Obj.networkInfo;
 
   routerOutlet:any;
   private readonly IDMENU = "tab-1";
@@ -30,7 +34,7 @@ export class Tab1Page implements OnInit {
     this.updateListAccounts();
   }
 
-  selectAccount(account:any,itemClicked:IonItem,containerAccountList:IonList){
+  selectAccount(account:IAccount,itemClicked:IonItem,containerAccountList:IonList){
     let accountList = containerAccountList["el"];
     let itemlist = itemClicked["el"];
 
@@ -40,7 +44,17 @@ export class Tab1Page implements OnInit {
 
     this.isAccountSelected = true;
     console.log("account", account);
+    this.accountSelected = account;
+    this.balance = "0";
 
+    this.showAccountBalance();
+  }
+
+  showAccountBalance(){
+    Account.balance(this.accountSelected.public_key!).then(amount=>{
+      //console.log("amount",amount)
+      if(typeof amount==="string") this.balance = amount;
+    });
   }
 
   async openModalAddNewAccount(){
@@ -63,6 +77,27 @@ export class Tab1Page implements OnInit {
   updateListAccounts(){
     Account.listAll().then(resp=>{
       this.accounts = resp;
+    });
+  }
+
+  updateNetworkInfo(){
+    this.networkInfo = Web3Obj.networkInfo;
+  }
+
+  deleteAccount(){
+    swal({
+      title: "Tens a certeza?",
+      text: "Ao eliminar esta conta todo o histórico de transações se perderá",
+      icon: "warning",
+      buttons: ["cancelar","continuar"],
+      dangerMode: true,
+    })
+    .then((willDelete) => {
+      if (willDelete) {
+        Account.delete(this.accountSelected?.private_key!);
+        this.updateListAccounts();
+        this.isAccountSelected = false;
+      }
     });
   }
 

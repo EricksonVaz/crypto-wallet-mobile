@@ -1,5 +1,5 @@
 <ion-content>
-  <form #formLogin #f="ngForm" class="form-login" (ngSubmit)="submit(f,formLogin)">
+  <form #formLogin #f="ngForm" [hidden]="!showLoginForm" class="form-login" (ngSubmit)="submit(f,formLogin)">
     <div class="header">
       <img src="assets/android-chrome-192x192.png" alt="">
       <h1 class="form-title">Login</h1>

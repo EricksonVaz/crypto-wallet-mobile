@@ -39,6 +39,8 @@
 .account-address{
   color: rgba(220, 220, 220, .324);
   font-size: 14px;
+  word-wrap: break-word;
+  word-break: break-all;
 }
 .account-name{
   font-weight: bold;
