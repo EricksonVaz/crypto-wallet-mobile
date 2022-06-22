@@ -6,20 +6,22 @@ import { Tab1Page } from './tab1.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab1PageRoutingModule } from './tab1-routing.module';
-import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
-import { FormatPkPipe } from '../utils/pipes/format-pk.pipe';
 import { ModalEditAccountComponent } from '../components/modal-edit-account/modal-edit-account.component';
 import { ModalGetKeyComponent } from '../components/modal-get-key/modal-get-key.component';
+import { ShareModule } from '../utils/share/share.module';
+import { ToolbarComponent } from '../components/toolbar/toolbar.component';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    ShareModule,
     ExploreContainerComponentModule,
     Tab1PageRoutingModule
   ],
-  declarations: [Tab1Page,ToolbarComponent,ModalAddAccountComponent,FormatPkPipe,ModalEditAccountComponent,ModalGetKeyComponent]
+  declarations: [Tab1Page,ModalAddAccountComponent,ModalEditAccountComponent,ModalGetKeyComponent,ToolbarComponent],
+  exports:[ToolbarComponent]
 })
 export class Tab1PageModule {}

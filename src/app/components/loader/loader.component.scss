@@ -16,7 +16,7 @@
   position: relative;
   width: 80px;
   height: 80px;
-  background-color: white;
+  background-color: var(--ion-background-color);
 }
 
 .lds-ring div {
@@ -26,10 +26,10 @@
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid rgb(70, 70, 70);
+  border: 8px solid var(--ion-color-primary);
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: rgb(70, 70, 70) transparent transparent transparent;
+  border-color: var(--ion-color-primary) transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {

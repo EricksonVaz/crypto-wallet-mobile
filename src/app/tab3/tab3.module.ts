@@ -7,18 +7,20 @@ import { Tab3Page } from './tab3.page';
 import { ExploreContainerComponentModule } from '../explore-container/explore-container.module';
 
 import { Tab3PageRoutingModule } from './tab3-routing.module';
-import { FormatPkPipe } from '../utils/pipes/format-pk.pipe';
-import { ToolbarComponent } from '../components/toolbar/toolbar.component';
+import { ShareModule } from '../utils/share/share.module';
+import { Tab1PageModule } from '../tab1/tab1.module';
 
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
+    ShareModule,
     ExploreContainerComponentModule,
     RouterModule.forChild([{ path: '', component: Tab3Page }]),
     Tab3PageRoutingModule,
+    Tab1PageModule
   ],
-  declarations: [Tab3Page,FormatPkPipe,ToolbarComponent]
+  declarations: [Tab3Page]
 })
 export class Tab3PageModule {}

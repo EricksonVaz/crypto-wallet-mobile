@@ -26,6 +26,6 @@ import { LoaderComponent } from './components/loader/loader.component';
     provideAuth(() => getAuth())
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}
