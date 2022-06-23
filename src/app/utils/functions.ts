@@ -36,7 +36,10 @@ export function checkUserLoggedState(cb:Function,errCB:Function){
       closeLoader();
     }
     if(timeOut>=3){
-      errCB();
+
+      if(localStorage.getItem("logged"))cb();
+      else errCB();
+
       closeLoader();
       clearInterval(checkUserLogged);
     }

@@ -83,6 +83,7 @@ export default class User{
         // ...
         if(user){
           this.syncPassword();
+          localStorage.setItem("logged","logged");
           resolve(user);
         }
         else reject(
@@ -133,6 +134,7 @@ export default class User{
 
   static logout(cb:Function,errCb?:Function){
     signOut(getAuth()).then(() => {
+      localStorage.removeItem("logged");
       cb();
     }).catch((error) => {
       if(errCb) errCb(error);
