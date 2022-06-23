@@ -1,6 +1,6 @@
 <ion-header translucent>
   <ion-toolbar>
-    <ion-title>Chave Privada</ion-title>
+    <ion-title>Chaves da Conta</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismissModal()">Close
       </ion-button>
@@ -19,11 +19,12 @@
       <ion-button type="submit" class="btn-submit" fill="outline">obter chave</ion-button>
     </form>
   </div>
-  <div class="primary-key-container" [hidden]="!showPrivateKey">
-      <ion-label>{{privateKey.substring(2)}}</ion-label>
-      <ion-button slot="end" fill="outline" color="btn-add" (click)="copyKey(privateKey.substring(2) || '')">
-        <ion-icon name="copy-outline"></ion-icon>
-        Copiar
-      </ion-button>
+  <div class="key-container" [hidden]="!showPrivateKey">
+    <textarea readonly>{{privateKey.substring(2)}}</textarea>
+  </div>
+  <div class="key-container">
+    <ion-label class="label-public-key">Chave Publica</ion-label>
+    <qrcode [qrdata]="publicKey" [width]="256" [allowEmptyString]="true"></qrcode>
+    <ion-label>{{publicKey}}</ion-label>
   </div>
 </ion-content>

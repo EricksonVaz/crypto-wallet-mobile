@@ -10,6 +10,12 @@
   </ion-header>
 
   <app-explore-container name="Tab 1 page"></app-explore-container> -->
+  <ion-refresher
+    slot="fixed"
+    (ionRefresh)="refreshPage($event)"
+  >
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
   <div class="details-acount-container">
     <div class="no-account-selected" *ngIf="!isAccountSelected">
       <ion-label>Selecione uma conta</ion-label>
@@ -20,15 +26,14 @@
       </ion-avatar>
       <ion-label class="amount-coin">{{balance}} {{networkInfo.symbol}}</ion-label>
       <ion-label class="account-name">{{accountSelected?.name}}</ion-label>
-      <ion-label class="account-address">{{accountSelected?.public_key}}</ion-label>
       <div class="row-account-actions">
-        <ion-button color="primary" fill="outline" (click)="openModalEditAccount()">
+        <ion-button color="btn-add" fill="outline" (click)="openModalEditAccount()">
           <ion-icon name="create-outline"></ion-icon>
         </ion-button>
-        <ion-button color="primary" fill="outline" (click)="openModalGetKey()">
+        <ion-button color="btn-add" fill="outline" (click)="openModalGetKey()">
           <ion-icon name="key-outline"></ion-icon>
         </ion-button>
-        <ion-button color="danger" fill="outline" (click)="deleteAccount()">
+        <ion-button color="btn-add" fill="outline" (click)="deleteAccount()">
           <ion-icon name="trash-outline"></ion-icon>
         </ion-button>
       </div>

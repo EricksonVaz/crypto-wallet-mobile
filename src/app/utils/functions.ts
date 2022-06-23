@@ -37,7 +37,10 @@ export function checkUserLoggedState(cb:Function,errCB:Function){
     }
     if(timeOut>=3){
 
-      if(localStorage.getItem("logged"))cb();
+      if(localStorage.getItem("logged")){
+        sessionStorage.setItem("procced","ok");
+        cb();
+      }
       else errCB();
 
       closeLoader();

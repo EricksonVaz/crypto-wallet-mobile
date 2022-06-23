@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    sessionStorage.removeItem("procced");
     openLoader()
     window.addEventListener("load",async ()=>{
       await SplashScreen.hide();

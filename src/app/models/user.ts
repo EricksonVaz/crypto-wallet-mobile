@@ -135,6 +135,7 @@ export default class User{
   static logout(cb:Function,errCb?:Function){
     signOut(getAuth()).then(() => {
       localStorage.removeItem("logged");
+      sessionStorage.removeItem("procced");
       cb();
     }).catch((error) => {
       if(errCb) errCb(error);

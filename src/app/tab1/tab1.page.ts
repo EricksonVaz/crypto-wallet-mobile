@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { IonItem, IonList, IonRouterOutlet, MenuController, ModalController } from '@ionic/angular';
+import { IonItem, IonList, IonRouterOutlet, MenuController, ModalController, ToastController } from '@ionic/angular';
 import { environment } from 'src/environments/environment';
 import {Clipboard} from '@angular/cdk/clipboard';
 import { ModalAddAccountComponent } from '../components/modal-add-account/modal-add-account.component';
@@ -27,7 +27,7 @@ export class Tab1Page implements OnInit {
   private readonly IDMENU = "tab-1";
   static component:Tab1Page;
 
-  constructor(private modalController:ModalController,private menu: MenuController, private clipBoard:Clipboard) {
+  constructor(private modalController:ModalController,private menu: MenuController, private clipBoard:Clipboard,private toastController:ToastController) {
     this.routerOutlet = document.querySelector("ion-router-outlet");
     Tab1Page.component = this;
   }
@@ -119,6 +119,23 @@ export class Tab1Page implements OnInit {
 
   copyAddress(value:string){
     this.clipBoard.copy(value||"");
+    this.presentToast();
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Endereço copiado',
+      duration: 2000
+    });
+    toast.present();
+  }
+
+  refreshPage(event:any){
+    console.log("refresh",event);
+    setTimeout(() => {
+      this.updateListAccounts();
+      event.target.complete();
+    }, 2000);
   }
 
 }

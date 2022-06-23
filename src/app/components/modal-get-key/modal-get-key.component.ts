@@ -13,10 +13,15 @@ export class ModalGetKeyComponent implements OnInit {
 
   showPrivateKey:boolean = false;
   privateKey:string = "";
+  publicKey:string = "";
 
   constructor(private clipBoard2:Clipboard) { }
 
   ngOnInit() {}
+
+  ionViewWillEnter(){
+    this.publicKey = Tab1Page.component.accountSelected?.public_key;
+  }
 
   dismissModal(){
     Tab1Page.component.dismissModal();

@@ -19,7 +19,7 @@ export class UserLoggedGuard implements CanActivate {
 
       //console.log("user logged",user)
 
-      if (user) return true;
+      if (user || sessionStorage.getItem("procced")) return true;
 
       this.router.navigateByUrl('login');
       return false;

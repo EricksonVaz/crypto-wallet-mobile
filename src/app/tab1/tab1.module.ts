@@ -11,6 +11,7 @@ import { ModalEditAccountComponent } from '../components/modal-edit-account/moda
 import { ModalGetKeyComponent } from '../components/modal-get-key/modal-get-key.component';
 import { ShareModule } from '../utils/share/share.module';
 import { ToolbarComponent } from '../components/toolbar/toolbar.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   imports: [
@@ -19,7 +20,8 @@ import { ToolbarComponent } from '../components/toolbar/toolbar.component';
     FormsModule,
     ShareModule,
     ExploreContainerComponentModule,
-    Tab1PageRoutingModule
+    Tab1PageRoutingModule,
+    QRCodeModule
   ],
   declarations: [Tab1Page,ModalAddAccountComponent,ModalEditAccountComponent,ModalGetKeyComponent,ToolbarComponent],
   exports:[ToolbarComponent]

@@ -1,4 +1,4 @@
-.container-form,.primary-key-container {
+.container-form,.key-container {
   width: 300px;
   margin: 50px auto 10px auto;
   border: 2px solid rgba(220, 220, 220, .324);
@@ -22,7 +22,7 @@
   margin-top: 15px;
 }
 
-.primary-key-container{
+.key-container{
   margin-top: 10px;
   min-height: max-content;
   display: flex;
@@ -33,4 +33,19 @@
   justify-content: center;
   align-items: center;
   gap: 20px;
+}
+
+.key-container textarea{
+  width: 100%;
+  border: transparent;
+  text-align: center;
+  padding: 5px;
+  height: 95px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+.label-public-key{
+  font-weight: bold;
+  font-size: 20px;
+  align-self: flex-start;
 }
